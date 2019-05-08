@@ -12,23 +12,21 @@ def main():
     hidden_bias[] -array of bias for each hidden layer - NULLABLE
     output_bias - output bias - NULLABLE
     """
-    net = n.Network(15, [15, 10, 5], 4)
+    net = n.Network(15, [15], 4)
+
+    # ----------------------------- TRAINING -----------------------------------------
+    # TRAINING: will train test and test it
+    # training settings can be modified insite the method
+
+    #train(net)
 
     # ----------------------------- PREDICT -----------------------------------------
     # if NOT testing, get weights from previous training
     # then choose one file, custom or in binary
 
-    #net.read()
-    #data = f.read_custom_test('data\custom_all.txt')
-    # data = f.read_binary('data\binary_all.txt')
-
-    #predict_array(data, net)
-
-    # ----------------------------- TESTING -----------------------------------------
-    # TESTING: will train test and test it
-    # training settings can be modified insite the method
-
-    train(net)
+    net.read()
+    predict_array(f.read_custom_test('data\custom_all.txt'), net)
+    # predict_array(f.read_binary('data/binary_all.txt'), net)
 
 
 def predict_array(X, net):
@@ -37,20 +35,22 @@ def predict_array(X, net):
 
 
 def predict(X, net):
-    print("Input:", X, "Result:", net.predict(X))
+    res = net.predict(X)
+    print("Input:", X, "Result:", res[0], "Accuracy:", res[1])
 
 
 def train(net):
-    file = "train/binary_all.txt"
+    file = "train/numers_plus_all.txt"
     training_rate = 0.25
     epochs = 10000
+    min_error = 0.00001
 
     X, Y = f.read_training(file)
 
     print("Started training:")
     time()
 
-    net.train(X, Y, training_rate, epochs)
+    net.train(X, Y, training_rate, epochs, min_error)
 
     print("Done training.")
     time()
@@ -66,8 +66,9 @@ def test(net, X, Y):
 
     for i in range(len(Y)):
         res = net.predict(X[i])
-        aux.append(res)
-        print("Input:", X[i], "Expected:", Y[i], "Result:", res, "Error: ", net.error(Y[i], res))
+        aux.append(res[0])
+        print("Input:", X[i], "Expected:", Y[i], "Result:", res[0], "Error: ",
+              net.error(Y[i], res[0]), "Accuracy: ", res[1])
 
     print("Total error:", net.error(Y, aux))
 
