@@ -1,39 +1,39 @@
 ----------- Executar -------------
-O ponto de entrada para executar o código é o arquivo main.py.
-Nele são realizadas a configurações da execução de treinamento e predição.
+O ponto de entrada para executar o cÃ³digo Ã© o arquivo main.py.
+Nele sÃ£o realizadas a configuraÃ§Ãµes da execuÃ§Ã£o de treinamento e prediÃ§Ã£o.
 
 
 
 
 ----------- Treinamento -------------
-Para treinar a rede é necessário informar o arquivo com os dados de treinamento e parâmetros.
-Isso é feito na função train(net).
+Para treinar a rede Ã© necessÃ¡rio informar o arquivo com os dados de treinamento e parÃ¢metros.
+Isso Ã© feito na funÃ§Ã£o train(net).
 
-Ao treinar, os "weights" de cada camada são salvos em arquivos .txt, na pasta weights.
-Além disso, é feito um teste com todos os dados de teste após o treinamento.
+Ao treinar, os "weights" de cada camada sÃ£o salvos em arquivos .txt, na pasta weights.
+AlÃ©m disso, Ã© feito um teste com todos os dados de teste apÃ³s o treinamento.
 
 O arquivo de treinamento deve estar no seguinte formato, podendo conter N linhas:
 
-[codigo do número][resultado esperado]
+[codigo do nÃºmero][resultado esperado]
 
 Por exemplo:
 0 1 0 1 1 0 0 1 0 0 1 0 1 1 1 0 0 1 0
 
 Onde,
-representa o desenho do número 1    representa o número 1 em binário
+representa o desenho do nÃºmero 1    representa o nÃºmero 1 em binÃ¡rio
 [0 1 0 1 1 0 0 1 0 0 1 0 1 1 1]     [0 0 1 0]
 
 
 
------------ Predição -------------
-Para a predição é possível ler os "weights" obtidos em um treinamento anterior.
+----------- PrediÃ§Ã£o -------------
+Para a prediÃ§Ã£o Ã© possÃ­vel ler os "weights" obtidos em um treinamento anterior.
 
-É possível informar como entrada para a predição 2 formatos de arquivos:
+Ã‰ possÃ­vel informar como entrada para a prediÃ§Ã£o 2 formatos de arquivos:
 
-binário, onde o mesmo possui N linhas, cada uma no formato a seguir, representa o desenho do número:
+binÃ¡rio, onde o mesmo possui N linhas, cada uma no formato a seguir, representa o desenho do nÃºmero:
 0 1 0 1 1 0 0 1 0 0 1 0 1 1 1
 
-ou o "desenho" do número, onde cada desenho é colocado lado a lado, conforme a seguir:
+ou o "desenho" do nÃºmero, onde cada desenho Ã© colocado lado a lado, conforme a seguir:
 
  X  XX  XXX X X XXX  XX XXX XXX XXX XXX
 XX    X   X X X X   X     X X X X X X X
@@ -41,4 +41,4 @@ XX    X   X X X X   X     X X X X X X X
  X  X     X   X   X X X   X X X   X X X
 XXX XXX XXX   X XXX  X    X XXX   X XXX
 
-Cada número deve ser desenhado em uma matrix de 3x5, podendo desenhar n números, todos lado a lado
+Cada nÃºmero deve ser desenhado em uma matrix de 3x5, podendo desenhar n nÃºmeros, todos lado a lado com um espaÃ§o em branco entre cada desenho, conforme acima
